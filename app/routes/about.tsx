@@ -1,5 +1,6 @@
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/about";
 import { Welcome } from "../welcome/welcome";
+import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,9 +10,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
-  return { message: context.VALUE_FROM_EXPRESS };
+  return { message: 'about page'};
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <Welcome message={loaderData.message} />;
+  return <>
+    <Link to="/">Back to index</Link>
+    <Welcome message={loaderData.message} />
+  </>;
 }
